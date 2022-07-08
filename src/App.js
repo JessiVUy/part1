@@ -3,6 +3,8 @@ import Note from './Componentes/Note'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Header from './Componentes/Header/Header'
+import noteServices from './services/notes'
+//mport { getOverlappingDaysInIntervals } from 'date-fns'
 
 
 const App = () => {
@@ -15,6 +17,7 @@ const App = () => {
   useEffect(()=>{
     console.log('useEffect')
     axios.get('http://localhost:3001/notes')
+    noteServices.getAll()
     .then(response =>{
       console.log('promise')
       setNote(response.data)
@@ -30,6 +33,10 @@ const App = () => {
       date: '2019-05-30T17:30:31.098Z',
       important: Math.random() < 0.5,
     }
+
+    /*noteServices.update(,noteObj).then(response=>{
+      setNote(note.concat(response.data))
+    })*/
 
     axios.post('http://localhost:3001/notes', noteObj)
          .then(response=>{
