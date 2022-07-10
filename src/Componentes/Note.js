@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Note = ({note , toggleImportance }) => {
+const Note = ({note , toggleImportance , deleteNote}) => {
     const estadoNote = note.important ? 'not important' : 'important'
 
   return (
@@ -11,6 +11,7 @@ const Note = ({note , toggleImportance }) => {
             {note.content}
             {note.date}
             <button onClick={toggleImportance}>{estadoNote}</button>
+            
         </li>
     </div>
   )
